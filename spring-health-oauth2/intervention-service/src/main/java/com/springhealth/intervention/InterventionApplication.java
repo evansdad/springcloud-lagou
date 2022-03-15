@@ -1,5 +1,6 @@
 package com.springhealth.intervention;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,19 +18,21 @@ import org.springframework.web.client.RestTemplate;
 @EnableResourceServer
 public class InterventionApplication {
 
-//	@Bean
-//	@LoadBalanced
-//	public RestTemplate getRestTemplate(){
-//		return new RestTemplate();
-//	}
-	
+    /*
+	@Bean
+	@LoadBalanced
+	public RestTemplate getRestTemplate(){
+		return new RestTemplate();
+	}
+   */
+
     @Bean
     @LoadBalanced
-    public OAuth2RestTemplate oauth2RestTemplate(OAuth2ClientContext context,
+    public OAuth2RestTemplate oauth2RestTemplate(@Qualifier("oauth2ClientContext") OAuth2ClientContext context,
                                                  OAuth2ProtectedResourceDetails details) {
         return new OAuth2RestTemplate(details, context);
     }
-    
+
     public static void main(String[] args) {
         SpringApplication.run(InterventionApplication.class, args);
     }

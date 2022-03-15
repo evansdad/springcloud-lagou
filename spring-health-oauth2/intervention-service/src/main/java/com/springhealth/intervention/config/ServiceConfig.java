@@ -1,6 +1,7 @@
 package com.springhealth.intervention.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.stereotype.Component;
 
 @Component

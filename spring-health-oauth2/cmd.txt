@@ -1,0 +1,4 @@
+https://www.cnblogs.com/jasonzeng/p/14713373.html
+#docker run -d --restart always -p 9411:9411 --name zipkin openzipkin/zipkin
+
+docker run -d -p 9411:9411 --name zipkin openzipkin/zipkin
