@@ -23,8 +23,8 @@ spring:
 
 security:
   oauth2:
-    resource:
-      userInfoUri: http://localhost:8080/userinfo
+#    resource:
+#      userInfoUri: http://localhost:8080/userinfo
     client:
       grant-type: client_credentials
 

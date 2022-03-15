@@ -8,7 +8,10 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 public class SpringHealthResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.authorizeRequests()
+		httpSecurity.httpBasic(c->{
+			//配置域名
+			c.realmName("http://localhost:8080/userinfo");
+		}).authorizeRequests()
         	.antMatchers("/interventions/**")
         	.hasRole("ADMIN")
         	.anyRequest()
